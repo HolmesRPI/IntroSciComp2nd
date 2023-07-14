@@ -1,6 +1,7 @@
 
 These are supplementary files for the text: Introduction to Scientific Computing and Data Analysis (2nd Edition) by Mark H. Holmes
 
+This repository is under construction and will be complete by Aug 28, 2023 (the current date is July 14, 2023).
 
 The compressed files include the following:
 
