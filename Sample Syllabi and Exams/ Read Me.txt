@@ -1,8 +1,0 @@
-
-Included are examples of my syllabi, and exams, for the computing courses taught using this text. Each course is four credits, and meets twice each week for approximately 2 hours.  So, each exam period is approximately 2 hours.
-
-
-MATH-4800 (Numerical Computing): is an introduction to scientific computing; the pre-reqs are MATH-2010 (which is half matrix algebra and half multivariable calc), an introductory CS programming course, and a corequisite introductory course in differential equations.  This is offered every semester, typically has an enrollment of about 90, and is taken by math, CS, physics and (some) engineering undergrads
-
-
-MATH-4840 (Numerical Linear Algebra with Applications): is a course on numerical linear algebra and data analysis; the prerequisite is MATH-4800. This is offered every other year, typically has an enrollment of about 50, and is taken by math, CS, and physics undergrads and grads.
