@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage[innercaption]{sidecap}
+\newcommand{\estart}
+{
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\vspace{-0.5\baselineskip}
+\begin{enumerate}
+}
+
+\newcommand{\eend}
+{
+\end{enumerate}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+}
+
+\usepackage{rotating}
+
+
+\usepackage[absolute]{textpos}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\section*{Summary: Linear Least Squares (Chapter 8)}
+
+\begin{textblock}{170}(10,260)
+\noindent \textsf{{\small Intro Scientific Computing and Data Analysis, M. H. Holmes, 2nd ed (version: \today)}}
+\end{textblock}
+
+\bigskip\bigskip\noindent
+\textbf{Basic: $y=v_1+v_2x$}
+
+\bigskip\noindent
+Error Function:
+\[
+E(v_1,v_2) = \sum_{i=1}^n (v_1+v_2x_i - y_i)^2
+\tag{8.9}
+\]
+
+Solution:
+\[
+\begin{pmatrix}
+v_1  \medskip\\
+v_2
+\end{pmatrix}
+=
+\frac{1}{n\sum x_i^2 - \big (\sum x_i \big)^2} \!
+\begin{pmatrix}
+\,\, \sum x_i^2 & -\sum x_i  \\[0.4em]
+-\sum x_i & \quad n 
+\end{pmatrix}
+\!\!\!
+\begin{pmatrix}
+\sum  y_i  \medskip\\
+\sum  x_iy_i 
+\end{pmatrix}
+\tag{8.11}
+\]
+
+\bigskip\bigskip\noindent
+Error Function:
+\[
+E(v_1,v_2) = \sum_{i=1}^n \! \left ( \frac{v_1+v_2x_i - y_i}{y_i} \right ) ^2
+\tag{Exercise 8.17}
+\]
+
+Solution:
+\[
+\begin{pmatrix}
+v_1  \\[0.3em]
+v_2
+\end{pmatrix}
+=
+\frac{1}{ad-b^2} \!
+\begin{pmatrix}
+a   \,\,&\,\, -b  \\[0.3em]
+-b \,\,&\,\, d
+\end{pmatrix}
+ \!\!
+\begin{pmatrix}
+\sum 1/y_i  \\[0.3em]
+\sum  x_i/y_i 
+\end{pmatrix}
+\]
+
+\bigskip
+\hspace{1in} where $a=\sum x_i^2/y_i^2$, $b=\sum x_i/y_i^2$, and $d=\sum 1/y_i^2$
+
+
+\bigskip\bigskip\bigskip\noindent
+\textbf{General} 
+
+\bigskip\noindent
+Error Function:
+\[
+E(\mathbf{v}) = ||\mathbf{A}\mathbf{v}-\mathbf{y}||_2^2
+\tag{8.12}
+\]
+
+Moore-Penrose Solution:
+\[
+ \mathbf{v} =\mathbf{A}^+ \mathbf{y}
+ \]
+
+\hspace{1in} where 
+\[
+\mathbf{A}^+ \equiv  (\mathbf{A}^T\mathbf{A})^{-1} \mathbf{A}^T
+\tag{8.25}
+\]
+
+\medskip
+QR Solution (GS version):
+\[
+\mathbf{R}_m\mathbf{v} = \mathbf{y}_m 
+\tag{8.22}
+\]
+
+\bigskip
+\hspace{1in} where $\mathbf{R}_m=\mathbf{G}^T \mathbf{A}$, $\mathbf{y}_m=\mathbf{G}^T\mathbf{y}$, and $\mathbf{G}=\text{GS}(\mathbf{A})$
+
+\bigskip\bigskip
+SVD Solution: $\mathbf{A}=\mathbf{U}\mathbf{\Sigma}\mathbf{V}^T$
+\[
+\mathbf{A}^+= \mathbf{V}\mathbf{\Sigma}^{-T}\mathbf{U}^T
+\tag{Exercise 8.7}
+\]
+
+
+
+
+
+ \end{document}
+ 
+

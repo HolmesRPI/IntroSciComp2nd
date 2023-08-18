@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage[innercaption]{sidecap}
+\newcommand{\estart}
+{
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\vspace{-0.5\baselineskip}
+\begin{enumerate}
+}
+
+\newcommand{\eend}
+{
+\end{enumerate}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+}
+
+\usepackage{rotating}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+\usepackage[absolute]{textpos}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\section*{Summary: Minimization (Chapter 9)}
+
+\begin{textblock}{170}(10,260)
+\noindent \textsf{{\small Intro Scientific Computing and Data Analysis, M. H. Holmes, 2nd ed (version: \today)}}
+\end{textblock}
+
+\bigskip\bigskip\noindent
+\textbf{Problem and Notation:}  minimize $f(\mathbf{x})$, and let $\mathbf{g}=\nabla f$
+
+\bigskip\bigskip\noindent
+\textbf{Basic Iterative Method}
+
+\bigskip\noindent
+\[
+\mathbf{x}_{k+1}=\mathbf{x}_{k}+\alpha_{k}\mathbf{z}_{k}, \; \;\text{ for } \;  k=1,2,3,\ldots .
+\]
+
+\bigskip\bigskip\noindent
+\textbf{Newton:} Take $\alpha_{k}=1$ and $\mathbf{H}_{k}\mathbf{z}_{k}=-\mathbf{g}_{k}$, where $\mathbf{H}$ is the Hessian matrix of $f(\mathbf{x})$
+
+
+\bigskip\bigskip\noindent
+\textbf{Gradient Descent:} $\mathbf{z}_1=-\mathbf{g}_1$, otherwise
+
+\bigskip
+\hspace{0.05in}SDM: $\mathbf{z}_k=-\mathbf{g}_k$
+
+\bigskip
+\hspace{0.05in}CGM: $\mathbf{z}_{k} = - \mathbf{g}_{k}+\beta_{k-1}\mathbf{z}_{k-1}$, where  $\displaystyle \beta_{k}=\frac{\mathbf{g}_{k+1} \bigcdot (\mathbf{g}_{k+1}-\mathbf{g}_{k})}{\mathbf{g}_{k} \bigcdot \mathbf{g}_{k}}$
+
+\bigskip\medskip
+\hspace{0.05in}$\alpha_{k}$: a line search is used to obtain $f(\mathbf{x}_{k}+\alpha_{k}\mathbf{z}_{k})<f(\mathbf{x}_{k})$
+
+\bigskip\medskip
+\hspace{0.05in}Special Case: if $f(\mathbf{x})=\frac{1}{2}\mathbf{x}^T\mathbf{A}\mathbf{x}-\mathbf{x} \bigcdot \mathbf{b}$, where $\mathbf{A}$ is symmetric and positive definite, then 
+\[
+\alpha_{k}=\frac{\mathbf{g}_k \bigcdot  \mathbf{g}_k}{\mathbf{g}_k \bigcdot \mathbf{A} \mathbf{g}_k}
+\qquad \text{and} \qquad
+\beta_{k}=\frac{\mathbf{g}_{k+1} \bigcdot \mathbf{g}_{k+1}}{\mathbf{g}_{k} \bigcdot \mathbf{g}_{k}}
+\]
+
+\bigskip\bigskip\noindent
+\textbf{Levenberg-Marquardt:} Assume $f(\mathbf{x})= \mathbf{f} \bigcdot \mathbf{f}$.  Take $\alpha_{k}=1$ and $\mathbf{S}_{k}\mathbf{z}_{k}=-\mathbf{g}_{k}$, where
+\begin{align}
+\mathbf{S}_k &=\mathbf{G}_k + \mu_k \mathbf{D}_k, \notag \\[0.4em]
+\mathbf{D}_k &= \text{diag}(\mathbf{G}_k) , \notag \\[0.4em]
+\mathbf{G}_k &= 2 \mathbf{J}_k^T\mathbf{J}_k \notag
+\end{align}
+
+\hspace{0.05in} Also, $\mathbf{J}$ is the Jacobian matrix for $\mathbf{f}(\mathbf{x})$ and $\mu_k$ is specified (e.g., $\mu_1=10$, $\mu_k=\frac{1}{2}\mu_{k-1}$).
+
+
+
+
+
+
+
+
+
+
+
+ \end{document}
+ 
+

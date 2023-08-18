@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage[innercaption]{sidecap}
+\newcommand{\estart}
+{
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\vspace{-0.5\baselineskip}
+\begin{enumerate}
+}
+
+\newcommand{\eend}
+{
+\end{enumerate}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+}
+
+\usepackage{rotating}
+
+\usepackage[absolute]{textpos}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\section*{Summary: Composite Integration (Chapter 6)}
+
+\begin{textblock}{170}(10,260)
+\noindent \textsf{{\small Intro Scientific Computing and Data Analysis, M. H. Holmes, 2nd ed (version: \today)}}
+\end{textblock}
+
+
+\bigskip\bigskip\bigskip\noindent
+\textbf{Midpoint}
+\[
+I_M =h  \! \left [  f \! \Big ( a+\frac{1}{2}h \Big  ) +f \! \Big ( a+h \Big  ) +f \! \Big ( a+\frac{3}{2}h  \Big  ) + \cdots + f \! \Big ( a+(n-\frac{1}{2})h \Big  ) \right ]
+\tag{6.9}
+\]
+
+\medskip
+where $E_M= \frac{b-a}{24} h^2 f''(\eta)$.  Romberg: $\int_a^b f(x)dx =  \frac{1}{3} \big [ 4I_M(2n)-I_M(n) \big ] +O(h^3)$
+
+\bigskip\bigskip\bigskip\bigskip\noindent
+\textbf{Trapezoidal}
+\[
+I_T=h \! \left (\frac{1}{2} f_1 + f_2 + f_3 + \cdots + f_n + \frac{1}{2}f_{n+1} \right )
+\tag{6.15}
+\]
+
+\medskip
+where $E_T= - \frac{b-a}{12} h^2 f''(\eta)$.   Romberg: $\int_a^b f(x)dx = \frac{1}{3} \big [ 4I_T(2n)-I_T(n) \big ]  +O(h^3)$
+
+\bigskip\bigskip\bigskip\bigskip\noindent
+\textbf{Simpson}
+\[
+I_S=\frac{h}{3}  \! \left ( f_1 + 4f_2 + 2 f_3 + 4f_4 + 2 f_5 + \cdots + 4f_n + f_{n+1} \right )
+\tag{6.22}
+\]
+
+\medskip
+where  $E_S= -\frac{b-a}{180} h^4 f''''(\eta)$.    Romberg: $\int_a^b f(x)dx =  \frac{1}{15} \big [ 16I_S(2n)-I_S(n) \big ]  +O(h^6)$
+
+
+\bigskip\bigskip\bigskip\bigskip\noindent
+\textbf{Hermite}
+\[
+I_H=I_T+ \frac{1}{12} h^2 \! \left ( f_1'-f_{n+1}' \right )
+\tag{6.28}
+\]
+
+\medskip
+where  $E_H= \frac{b-a}{720} h^4 f''''(\eta)$.  Romberg: $\int_a^b f(x)dx =  \frac{1}{15} \big [ 16I_H(2n)-I_H(n) \big ] +O(h^6)$
+
+\bigskip\bigskip\bigskip\bigskip\noindent
+\textbf{Discrete Data (via Cubic Splines)}
+\[
+\int_a^b f(x)dx \approx  \frac{1}{3} I_T + \frac{2}{3}  \sum_{i=1}^n h_i s \! \bigg (x_i+\frac{1}{2} h_i \bigg )
+\tag{6.40}
+\]
+
+\medskip
+where $h_i=x_{i+1}-x_i$.
+
+
+
+\newpage\noindent
+%\bigskip\bigskip\bigskip\bigskip\noindent
+\textbf{Gaussian}
+\[
+I_G =  w_1 f(z_1) + w_2 f(z_2) +  \cdots + w_m f(z_m) 
+\tag{6.42}
+\]
+
+\medskip
+where $|E_G | \le \frac{\alpha}{\sqrt{m}} \, R^{2 m }  ||f^{(2 m)}||_\infty$ for $R=(b-a)e/(8m)$ and $\alpha=(b-a)\sqrt{\pi}/4$\\
+
+$ $
+
+\begin{table}[h]
+\begin{center}
+\renewcommand\arraystretch{2.2}
+\renewcommand\tabcolsep{6pt}
+%\begin{tabular}{| p{0.5in} | p{2.4in} | p{4in} | } \hline
+\begin{tabular}{c|c|l}
+$\displaystyle k$ & $\displaystyle f(x)$ &  \, \rule[-10pt]{0pt}{5pt}\hbox{  $ \displaystyle \int_a^b f(x)dx$ }  \\ \hline
+  $\displaystyle 0$ &  $\displaystyle 1$ &    $\ell$  \\
+  $\displaystyle 1$ & $\displaystyle x$ &    $\displaystyle \ell x_m$  \\
+  $\displaystyle 2$ &$\displaystyle x^2$ &    $\displaystyle \ell \! \left ( x_m^2 + \frac{1}{12} \ell^2   \right )$  \\
+  $\displaystyle 3$ &$\displaystyle x^3$ &    $\displaystyle \ell x_m \! \left (  x_m^2 +\frac{1}{4}  \ell^2  \right ) $  \\
+  $\displaystyle 4$ &$\displaystyle x^4$ &    $\displaystyle \ell \! \left ( x_m^4 + \frac{1}{2}\ell^2x_m^2 +  \frac{1}{80}\ell^4  \right  )$  \\
+% $x^5$ &    $h(2x_i+h)(x_i^2+hx_i+h^2)(x_i^2+hx_i+\frac{1}{2}h^2)$  
+  $\displaystyle 5$ &  $\displaystyle x^5$ &    $\displaystyle \ell x_m \! \left ( x_m^4 + \frac{5}{6} \ell^2x_m^2 +  \frac{1}{16}\ell^4  \right  )$  
+\end{tabular}
+\end{center}
+\caption{Values for $\int_a^bx^kdx$, where $\ell=b-a$ and $x_m=(b+a)/2$.}
+\end{table}
+
+
+
+
+
+ \end{document}
+ 
+
