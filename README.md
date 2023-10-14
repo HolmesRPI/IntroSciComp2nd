@@ -1,6 +1,9 @@
 
 These are supplementary files for the text: Introduction to Scientific Computing and Data Analysis (2nd Edition) by Mark H. Holmes
 
+If you want everything that's here, click on the green Code button above and select "Download ZIP." You can then uncompress the various zip files by simplying clicking on them.
+
+
 The compressed files include the following:
 
 1)  Figures and Tables: this is a folder containing the MATLAB files used to produce almost every figure and table in the textbook.
