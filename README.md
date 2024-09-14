@@ -1,4 +1,9 @@
 
+Due to GitHub's file size limit, I’ve decided to create a standalone website. The link is below. It is browser-based, which should make things a bit easier.
+
+http://holmesrpi.org/Books/index.books.html
+
+**************
 These are supplementary files for the text: Introduction to Scientific Computing and Data Analysis (2nd Edition) by Mark H. Holmes
 
 If you want everything that's here, click on the green Code button above and select "Download ZIP." You can then uncompress the various zip files by simplying clicking on them.
